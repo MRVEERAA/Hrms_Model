@@ -13,34 +13,30 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.CLIENT_URL, // Main Vercel domain
-  process.env.CLIENT_URL2, // Preview / build URL
-];
+const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL];
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("CORS Not Allowed"));
+        callback(new Error("❌ CORS Not Allowed: " + origin));
       }
     },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    preflightContinue: false, // <<< IMPORTANT for Express v5
-    optionsSuccessStatus: 204, // <<< Auto handle OPTIONS
+    credentials: true, // allow cookies if needed
   })
 );
+
+// ROUTES
 
 app.use("/api/auth", authRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/teams", teamRoutes);
 
-//START SERVER
+// START SERVER
 
 const startServer = async () => {
   try {
