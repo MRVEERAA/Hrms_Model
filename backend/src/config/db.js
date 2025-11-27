@@ -9,21 +9,27 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
+    dialect: "postgres",
     logging: false,
+    pool: {
+      max: 20,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false, // Supabase requires SSL
+        rejectUnauthorized: false,
       },
     },
   }
 );
 
-// test connection
+// Test connection
 sequelize
   .authenticate()
-  .then(() => console.log("💚 Database Connected Successfully"))
+  .then(() => console.log("💚 Supabase SESSION Pooler Connected"))
   .catch((err) => console.error("❌ DB Connection Failed:", err));
 
 export default sequelize;

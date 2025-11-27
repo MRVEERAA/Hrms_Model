@@ -13,11 +13,17 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const CLIENT_ORIGIN = process.env.CLIENT_URL || "http://localhost:5173";
+const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL];
 
 app.use(
   cors({
-    origin: CLIENT_ORIGIN,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS Not Allowed"));
+      }
+    },
     credentials: true,
   })
 );
