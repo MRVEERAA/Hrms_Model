@@ -33,7 +33,7 @@ export default function Dashboard() {
         </h2>
 
         <p className="text-lg text-bold  text-green-700 text-center mb-2">
-          Welcome {user ? user.name : ""}! 🎉
+          Welcome {user ? user.name : ""}...! 🎉
         </p>
 
         <p className="text-md text-gray-500 text-center mb-8">

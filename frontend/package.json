@@ -33,5 +33,11 @@
   },
   "tailwind": {
     "css": "./src/index.css"
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
