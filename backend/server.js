@@ -13,7 +13,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://hrms-model.vercel.app",
+  "https://hrms-model.onrender.com",
+];
 
 app.use(
   cors({
