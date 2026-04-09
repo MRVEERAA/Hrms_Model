@@ -73,7 +73,7 @@ export default function EmployeeForm() {
         </button>
       </div>
 
-      <div className="max-w-2xl mx-auto bg-[#090e1a]/40 border border-white/[0.05] rounded-[2.5rem] p-8 lg:p-12 backdrop-blur-md relative overflow-hidden">
+      <div className="max-w-2xl mx-auto bg-[#090e1a]/40 border border-white/5] rounded-[2.5rem] p-8 lg:p-12 backdrop-blur-md relative overflow-hidden">
         {/* DECORATIVE GRADIENT BLUR */}
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 blur-[80px] rounded-full" />
 
@@ -118,7 +118,7 @@ export default function EmployeeForm() {
                     onChange={handleChange}
                     required
                     placeholder="John"
-                    className="w-full bg-white/[0.02] border border-white/[0.08] rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
+                    className="w-full bg-white/2 border border-white/8 rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
                   />
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function EmployeeForm() {
                     onChange={handleChange}
                     required
                     placeholder="Doe"
-                    className="w-full bg-white/[0.02] border border-white/[0.08] rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
+                    className="w-full bg-white/2 border border-white/8 rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
                   />
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function EmployeeForm() {
                   onChange={handleChange}
                   required
                   placeholder="j.doe@company.com"
-                  className="w-full bg-white/[0.02] border border-white/[0.08] rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
+                  className="w-full bg-white/2 border border-white/8 rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
                 />
               </div>
             </div>
@@ -184,7 +184,7 @@ export default function EmployeeForm() {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full bg-white/[0.02] border border-white/[0.08] rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
+                  className="w-full bg-white/2 border border-white/8 rounded-2xl py-3 pl-12 pr-4 text-sm text-slate-200 placeholder:text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/40 transition-all"
                 />
               </div>
             </div>
