@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import sequelize from "./src/config/db.js";
 import cors from "cors";
 
+// ⭐ LOAD MODELS + ASSOCIATIONS
+import "./src/models/index.js";
+
 import authRoutes from "./src/routes/auth.router.js";
 import employeeRoutes from "./src/routes/employee.routes.js";
 import teamRoutes from "./src/routes/team.routes.js";
@@ -10,6 +13,7 @@ import teamRoutes from "./src/routes/team.routes.js";
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,24 +34,23 @@ app.use(
         callback(new Error("❌ CORS Not Allowed: " + origin));
       }
     },
-    credentials: true, // allow cookies if needed
-  })
+    credentials: true,
+  }),
 );
 
 // ROUTES
-
 app.use("/api/auth", authRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/teams", teamRoutes);
 
 // START SERVER
-
 const startServer = async () => {
   try {
     await sequelize.sync({ alter: false });
     console.log("📌 DB Synced");
 
     const PORT = process.env.PORT || 5000;
+
     app.listen(PORT, () => console.log(`🚀 Backend running on port ${PORT}`));
   } catch (err) {
     console.error("❌ Error:", err);

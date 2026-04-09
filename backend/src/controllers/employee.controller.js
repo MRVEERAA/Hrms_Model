@@ -1,5 +1,6 @@
 import Employee from "../models/employee.model.js";
 import Log from "../models/log.model.js";
+import Team from "../models/team.model.js";
 
 export const getEmployees = async (req, res) => {
   try {
@@ -109,6 +110,29 @@ export const deleteEmployee = async (req, res) => {
 
     res.json({ success: true, message: "Employee deleted" });
   } catch (error) {
+    res.status(500).json({ error: "Server Error" });
+  }
+};
+
+export const getEmployeesByTeam = async (req, res) => {
+  try {
+    const { teamId } = req.params;
+    const orgId = req.user.orgId;
+
+    const employees = await Employee.findAll({
+      where: { organisation_id: orgId },
+      include: [
+        {
+          model: Team,
+          where: { id: teamId },
+          through: { attributes: [] },
+        },
+      ],
+    });
+
+    res.json({ success: true, employees });
+  } catch (error) {
+    console.error("Team Filter Error:", error);
     res.status(500).json({ error: "Server Error" });
   }
 };
